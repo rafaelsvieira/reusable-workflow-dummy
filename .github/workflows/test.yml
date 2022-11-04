@@ -1,0 +1,8 @@
+name: Reusable Dumy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    uses: ./.github/workflows/dummy.yml

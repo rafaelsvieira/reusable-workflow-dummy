@@ -1,0 +1,13 @@
+name: Reusable Dumy
+
+on:
+  workflow_call:
+
+jobs:
+  reusable_workflow_job:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - uses: rafaelsvieira/action-secret-from-aws@main
+      with:
+        secretList: 'SECRET_A'
