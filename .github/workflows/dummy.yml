@@ -8,6 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-    - uses: rafaelsvieira/action-secret-from-aws@main
-      with:
-        secretList: 'SECRET_A'
+      - name: Get Current Job Log URL
+        uses: Tiryoh/gha-jobid-action@v0
+        id: jobs
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          job_name: ${{ github.job }}
+          per_page: 30
+
+      - name: Output Current Job Log URL
+        run: echo ${{ steps.jobs.outputs.html_url }}
+
+      - uses: rafaelsvieira/action-secret-from-aws@main
+        with:
+          secretList: 'SECRET_A'
